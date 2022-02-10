@@ -3,6 +3,8 @@ const router = express.Router();
 const TodoController = require('../controllers/todo.controller')
 const UserController = require('../controllers/user.controller')
 
+router.get('/show-users', UserController.renderIndex);
+
 router.get('/users', UserController.index);
 router.post('/users', UserController.create)
 router.put('/users/:id', UserController.edit)

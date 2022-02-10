@@ -4,6 +4,15 @@ const index = async (req, res) => {
   return res.status(200).send(await User.getUsers());
 }
 
+const renderIndex = async (req, res) => {
+  const users = await User.getUsers();
+
+  res.render('home', {
+    partialPrefix: 'user partial',
+    users
+  });
+}
+
 const create = async (req, res) => {
   const { email, password, address } = req.body;
   // User.users.push({
@@ -48,5 +57,5 @@ const destroy = async (req, res) => {
 }
 
 module.exports = {
-  index, create, edit, destroy
+  index, create, edit, destroy, renderIndex
 }
